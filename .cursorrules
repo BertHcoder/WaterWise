@@ -13,6 +13,16 @@ This project is a web application built using the latest .NET version for the ba
 - Package Management: NuGet
 - Version Control: Git
 
+## Frontend Rules
+- Use reactive programming with RxJS and Signals.
+- Use Angular CLI for efficient development and scaffolding.
+- Use Angular Material for UI components.
+- Use Angular Flex Layout for responsive design.
+- Use Angular Reactive Forms for form handling.
+- Use Angular Router for navigation.
+- Use Angular Services for shared functionality.
+- Use Lazy loading
+
 ## Development Guidelines
 - Follow best practices for .NET and Angular development.
 - Ensure code is clean, maintainable, and well-documented.
