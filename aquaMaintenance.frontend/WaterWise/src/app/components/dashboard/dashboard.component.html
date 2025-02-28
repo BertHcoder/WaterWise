@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="header">
+    <h1>Water Parameters Tracker</h1>
+  </div>
+  
+  <div class="nav-tabs">
+    <div 
+      class="nav-tab" 
+      [class.active]="activeTab === 'form'"
+      (click)="activeTab = 'form'">
+      Add Parameters
+    </div>
+    <div 
+      class="nav-tab" 
+      [class.active]="activeTab === 'history'"
+      (click)="activeTab = 'history'">
+      View History
+    </div>
+  </div>
+  
+  @switch (activeTab) {
+    @case ('form') {
+      <app-parameter-form></app-parameter-form>
+    }
+    @case ('history') {
+      <app-parameter-history></app-parameter-history>
+    }
+  }
+</div>

@@ -1,0 +1,92 @@
+<div class="card">
+  <h2>Water Parameters History</h2>
+  
+  @if (parameters.length === 0) {
+    <div class="empty-state">
+      <h3>No water parameters recorded yet</h3>
+      <p>Add some parameters using the form to start tracking your water quality.</p>
+    </div>
+  } @else {
+    <div class="parameter-grid">
+      @for (param of parameters.slice(0, 3); track param.id) {
+        <div class="parameter-card">
+          <div class="parameter-label">Date</div>
+          <div>{{ param.date | date:'mediumDate' }}</div>
+          
+          <div class="parameter-label">pH</div>
+          <div class="parameter-value">{{ param.ph }}</div>
+          
+          <div class="parameter-label">Temperature</div>
+          <div>{{ param.temperature }}°C</div>
+          
+          @if (param.notes) {
+            <div class="parameter-label">Notes</div>
+            <div>{{ param.notes }}</div>
+          }
+        </div>
+      }
+    </div>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>pH</th>
+          <th>Temp (°C)</th>
+          <th>Ammonia</th>
+          <th>Nitrite</th>
+          <th>Nitrate</th>
+          <th>KH</th>
+          <th>GH</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (param of parameters; track param.id) {
+          <tr>
+            <td>{{ param.date | date:'mediumDate' }}</td>
+            <td>
+              {{ param.ph }}
+              @if (param.ph < 6.5 || param.ph > 8.5) {
+                <span class="badge badge-warning">Attention</span>
+              } @else {
+                <span class="badge badge-normal">Normal</span>
+              }
+            </td>
+            <td>{{ param.temperature }}</td>
+            <td>
+              {{ param.ammonia }}
+              @if (param.ammonia > 0.25) {
+                <span class="badge badge-danger">High</span>
+              } @else if (param.ammonia > 0) {
+                <span class="badge badge-warning">Present</span>
+              } @else {
+                <span class="badge badge-normal">Safe</span>
+              }
+            </td>
+            <td>
+              {{ param.nitrite }}
+              @if (param.nitrite > 0.25) {
+                <span class="badge badge-danger">High</span>
+              } @else if (param.nitrite > 0) {
+                <span class="badge badge-warning">Present</span>
+              } @else {
+                <span class="badge badge-normal">Safe</span>
+              }
+            </td>
+            <td>{{ param.nitrate }}</td>
+            <td>{{ param.kh }}</td>
+            <td>{{ param.gh }}</td>
+            <td>
+              <button class="btn-danger" (click)="deleteParameter(param.id)">Delete</button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="9">No records found</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

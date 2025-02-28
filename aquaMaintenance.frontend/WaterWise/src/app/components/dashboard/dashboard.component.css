@@ -1,0 +1,28 @@
+/* Dashboard specific styles */
+.nav-tabs {
+  display: flex;
+  border-bottom: 2px solid #e0e7ee;
+  margin-bottom: 25px;
+  gap: 5px;
+}
+
+.nav-tab {
+  padding: 12px 24px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  font-weight: 500;
+  transition: all 0.3s;
+  color: #7f8c8d;
+  border-radius: 6px 6px 0 0;
+}
+
+.nav-tab:hover {
+  background-color: rgba(52, 152, 219, 0.05);
+  color: #3498db;
+}
+
+.nav-tab.active {
+  border-bottom: 3px solid #3498db;
+  color: #3498db;
+  font-weight: 600;
+}
