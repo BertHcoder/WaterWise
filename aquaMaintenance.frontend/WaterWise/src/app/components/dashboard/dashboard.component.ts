@@ -6,9 +6,9 @@ import { ParameterHistoryComponent } from '../parameter-history/parameter-histor
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, ParameterFormComponent, ParameterHistoryComponent, ],
+  imports: [CommonModule, ParameterFormComponent, ParameterHistoryComponent ],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
   activeTab: 'form' | 'history' = 'form';

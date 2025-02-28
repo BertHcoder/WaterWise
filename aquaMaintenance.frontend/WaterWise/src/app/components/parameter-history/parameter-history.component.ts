@@ -8,7 +8,7 @@ import { WaterParameters } from '../../models/water-parameters.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './parameter-history.component.html',
-  styleUrls: ['./parameter-history.component.css']
+  styleUrls: ['./parameter-history.component.scss']
 })
 export class ParameterHistoryComponent implements OnInit {
   parameters: WaterParameters[] = [];

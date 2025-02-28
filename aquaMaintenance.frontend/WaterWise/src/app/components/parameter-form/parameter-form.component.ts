@@ -8,7 +8,7 @@ import { WaterParametersService } from '../../services/water-parameters.service'
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './parameter-form.component.html',
-  styleUrls: ['./parameter-form.component.css']
+  styleUrls: ['./parameter-form.component.scss']
 })
 export class ParameterFormComponent {
   parameterForm: FormGroup;
