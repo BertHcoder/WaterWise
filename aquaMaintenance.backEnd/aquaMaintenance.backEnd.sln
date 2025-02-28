@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aquaMaintenance.backEnd", "aquaMaintenance.backEnd\aquaMaintenance.backEnd.csproj", "{C9CD5F1E-3309-43D5-9BEA-D7F933CEE408}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9CD5F1E-3309-43D5-9BEA-D7F933CEE408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9CD5F1E-3309-43D5-9BEA-D7F933CEE408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9CD5F1E-3309-43D5-9BEA-D7F933CEE408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9CD5F1E-3309-43D5-9BEA-D7F933CEE408}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76C43A33-AA6E-47AD-967A-778401238268}
+	EndGlobalSection
+EndGlobal

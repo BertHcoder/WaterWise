@@ -1,0 +1,46 @@
+# Cursor.ai Cursors Rules for WaterWise Project
+
+## Project Overview
+This project is a web application built using the latest .NET version for the backend and Angular for the frontend, incorporating Signals and RxJS for reactive programming.
+
+## Tech Stack
+- Backend: .NET (latest version)
+- Frontend: Angular, Signals, RxJS, TypeScript
+- Database: SQL Server
+- Testing: MSTest, NUnit, Karma
+- CI/CD: Azure DevOps
+- Code Quality: StyleCop, ReSharper
+- Package Management: NuGet
+- Version Control: Git
+
+## Development Guidelines
+- Follow best practices for .NET and Angular development.
+- Ensure code is clean, maintainable, and well-documented.
+- Use appropriate design patterns and architectural principles.
+- Implement unit tests for critical components and ensure high test coverage.
+- Maintain a consistent coding style across the project, adhering to the defined EditorConfig settings.
+
+## Deployment
+- Use Azure for hosting and deployment.
+- Ensure all sensitive information is secured and not hard-coded.
+- Automate deployment processes using CI/CD pipelines.
+- Monitor application performance and health metrics post-deployment.
+
+## Collaboration
+- Use Git for version control and follow branching strategies.
+- Conduct thorough code reviews for all pull requests.
+- Maintain clear and open communication within the team.
+
+## Performance
+- Optimize application performance and scalability.
+- Regularly profile and analyze application performance metrics.
+
+## Security
+- Implement security best practices to protect user data.
+- Regularly update dependencies to mitigate vulnerabilities.
+- Conduct security audits and code reviews focusing on security aspects.
+
+## Additional Considerations
+- Utilize Angular CLI for efficient development and scaffolding.
+- Leverage RxJS for managing asynchronous data streams effectively.
+- Ensure that all components are reusable and follow the DRY (Don't Repeat Yourself) principle.
