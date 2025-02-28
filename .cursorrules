@@ -13,6 +13,9 @@ This project is a web application built using the latest .NET version for the ba
 - Package Management: NuGet
 - Version Control: Git
 
+## General Rules
+- Do not add comments that state the obvious
+
 ## Frontend Rules
 - Use reactive programming with RxJS and Signals.
 - Use Angular CLI for efficient development and scaffolding.
@@ -22,6 +25,7 @@ This project is a web application built using the latest .NET version for the ba
 - Use Angular Router for navigation.
 - Use Angular Services for shared functionality.
 - Use Lazy loading
+- Use control flow
 
 ## Development Guidelines
 - Follow best practices for .NET and Angular development.
