@@ -3,27 +3,19 @@
     <h1>Water Parameters Tracker</h1>
   </div>
   
-  <div class="nav-tabs">
-    <div 
-      class="nav-tab" 
-      [class.active]="activeTab === 'form'"
-      (click)="activeTab = 'form'">
-      Add Parameters
-    </div>
-    <div 
-      class="nav-tab" 
-      [class.active]="activeTab === 'history'"
-      (click)="activeTab = 'history'">
-      View History
-    </div>
-  </div>
+  <mat-tab-group>
+    <mat-tab label="Add Parameters" (click)="activeTab = 'form'" [active]="activeTab === 'form'"></mat-tab>
+    <mat-tab label="View History" (click)="activeTab = 'history'" [active]="activeTab === 'history'"></mat-tab>
+  </mat-tab-group>
   
-  @switch (activeTab) {
-    @case ('form') {
-      <app-parameter-form></app-parameter-form>
+  <div class="content">
+    @switch (activeTab) {
+      @case ('form') {
+        <app-parameter-form></app-parameter-form>
+      }
+      @case ('history') {
+        <app-parameter-history></app-parameter-history>
+      }
     }
-    @case ('history') {
-      <app-parameter-history></app-parameter-history>
-    }
-  }
+  </div>
 </div>
