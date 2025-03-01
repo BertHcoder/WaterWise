@@ -1,78 +1,80 @@
+
 <div class="card">
   <h2>Add Water Parameters</h2>
   
-  @if (successMessage) {
-    <div class="alert alert-success">
-      {{ successMessage }}
-    </div>
-  }
+  <!-- <mat-alert *ngIf="successMessage" color="success">
+    {{ successMessage }}
+  </mat-alert> -->
 
   <form [formGroup]="parameterForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
-      <div class="form-group">
-        <label for="date">Date</label>
-        <input type="date" id="date" formControlName="date">
-        @if (parameterForm.get('date')?.invalid && parameterForm.get('date')?.touched) {
-          <div class="error">Date is required</div>
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput type="date" formControlName="date">
+        @if(parameterForm.get('date')?.invalid && parameterForm.get('date')?.touched){
+          <mat-error>
+            Date is required
+          </mat-error>
         }
-      </div>
 
-      <div class="form-group">
-        <label for="ph">pH Level</label>
-        <input type="number" id="ph" formControlName="ph" step="0.1">
-        @if (parameterForm.get('ph')?.invalid && parameterForm.get('ph')?.touched) {
-          <div class="error">Valid pH value is required (0-14)</div>
-        }
-      </div>
+      </mat-form-field>
 
-      <div class="form-group">
-        <label for="temperature">Temperature (°C)</label>
-        <input type="number" id="temperature" formControlName="temperature" step="0.1">
-        @if (parameterForm.get('temperature')?.invalid && parameterForm.get('temperature')?.touched) {
-          <div class="error">Valid temperature is required</div>
-        }
-      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>pH Level</mat-label>
+        <input matInput type="number" formControlName="ph" step="0.1">
+        <mat-error *ngIf="parameterForm.get('ph')?.invalid && parameterForm.get('ph')?.touched">
+          Valid pH value is required (0-14)
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Temperature (°C)</mat-label>
+        <input matInput type="number" formControlName="temperature" step="0.1">
+        <mat-error *ngIf="parameterForm.get('temperature')?.invalid && parameterForm.get('temperature')?.touched">
+          Valid temperature is required
+        </mat-error>
+      </mat-form-field>
     </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <label for="ammonia">Ammonia (ppm)</label>
-        <input type="number" id="ammonia" formControlName="ammonia" step="0.01">
-      </div>
+    <div class="form-row" *ngIf="parameterForm.get('ph')?.value > 0">
+      <mat-form-field appearance="fill">
+        <mat-label>Ammonia (ppm)</mat-label>
+        <input matInput type="number" formControlName="ammonia" step="0.01">
+      </mat-form-field>
 
-      <div class="form-group">
-        <label for="nitrite">Nitrite (ppm)</label>
-        <input type="number" id="nitrite" formControlName="nitrite" step="0.01">
-      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nitrite (ppm)</mat-label>
+        <input matInput type="number" formControlName="nitrite" step="0.01">
+      </mat-form-field>
 
-      <div class="form-group">
-        <label for="nitrate">Nitrate (ppm)</label>
-        <input type="number" id="nitrate" formControlName="nitrate" step="0.1">
-      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nitrate (ppm)</mat-label>
+        <input matInput type="number" formControlName="nitrate" step="0.1">
+      </mat-form-field>
     </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <label for="phosphate">Phosphate (ppm)</label>
-        <input type="number" id="phosphate" formControlName="phosphate" step="0.01">
-      </div>
+    <div class="form-row" *ngIf="parameterForm.get('ammonia')?.value > 0">
+      <mat-form-field appearance="fill">
+        <mat-label>Phosphate (ppm)</mat-label>
+        <input matInput type="number" formControlName="phosphate" step="0.01">
+      </mat-form-field>
 
-      <div class="form-group">
-        <label for="kh">KH (Carbonate Hardness)</label>
-        <input type="number" id="kh" formControlName="kh" step="0.1">
-      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>KH (Carbonate Hardness)</mat-label>
+        <input matInput type="number" formControlName="kh" step="0.1">
+      </mat-form-field>
 
-      <div class="form-group">
-        <label for="gh">GH (General Hardness)</label>
-        <input type="number" id="gh" formControlName="gh" step="0.1">
-      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>GH (General Hardness)</mat-label>
+        <input matInput type="number" formControlName="gh" step="0.1">
+      </mat-form-field>
     </div>
 
-    <div class="form-group">
-      <label for="notes">Notes</label>
-      <input type="text" id="notes" formControlName="notes" placeholder="Add any observations or changes made...">
-    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Notes</mat-label>
+      <input matInput type="text" formControlName="notes" placeholder="Add any observations or changes made...">
+    </mat-form-field>
 
-    <button type="submit" [disabled]="parameterForm.invalid">Save Parameters</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="parameterForm.invalid">Save Parameters</button>
   </form>
 </div>

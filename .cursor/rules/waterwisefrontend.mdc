@@ -1,7 +1,7 @@
 ---
 description: use control flow
 globs: *.html
-alwaysApply: false
+alwaysApply: true
 ---
 
 
