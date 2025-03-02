@@ -1,12 +1,64 @@
-
 <div class="card">
   <h2>Add Water Parameters</h2>
   
-  <!-- <mat-alert *ngIf="successMessage" color="success">
-    {{ successMessage }}
-  </mat-alert> -->
+  <div class="parameter-feedback" *ngIf="showFeedback">
+    <div class="feedback-header">
+      <h3>Neocaridina Shrimp Compatibility</h3>
+      <div class="health-score" [ngClass]="getHealthScoreClass()">
+        <div class="score-value">{{ feedback.healthScore }}</div>
+        <div class="score-label">Health Score</div>
+      </div>
+    </div>
+    
+    <div class="status-message" [ngClass]="'status-' + feedback.overallStatus">
+      <strong>Overall Status:</strong> {{ getStatusMessage() }}
+    </div>
+    
+    <div class="parameter-status-grid">
+      <div class="parameter-status" *ngIf="parameterForm.get('ph')?.value > 0" [ngClass]="'status-' + feedback.ph.status">
+        <div class="param-name">pH</div>
+        <div class="param-value">{{ feedback.ph.value }}</div>
+        <div class="param-status">{{ formatStatus(feedback.ph.status) }}</div>
+      </div>
+      
+      <div class="parameter-status" *ngIf="parameterForm.get('ammonia')?.value > 0" [ngClass]="'status-' + feedback.ammonia.status">
+        <div class="param-name">Ammonia</div>
+        <div class="param-value">{{ feedback.ammonia.value }} ppm</div>
+        <div class="param-status">{{ formatStatus(feedback.ammonia.status) }}</div>
+      </div>
+      
+      <div class="parameter-status" *ngIf="parameterForm.get('nitrite')?.value > 0" [ngClass]="'status-' + feedback.nitrite.status">
+        <div class="param-name">Nitrite</div>
+        <div class="param-value">{{ feedback.nitrite.value }} ppm</div>
+        <div class="param-status">{{ formatStatus(feedback.nitrite.status) }}</div>
+      </div>
+      
+      <div class="parameter-status" *ngIf="parameterForm.get('nitrate')?.value > 0" [ngClass]="'status-' + feedback.nitrate.status">
+        <div class="param-name">Nitrate</div>
+        <div class="param-value">{{ feedback.nitrate.value }} ppm</div>
+        <div class="param-status">{{ formatStatus(feedback.nitrate.status) }}</div>
+      </div>
+      
+      <div class="parameter-status" *ngIf="parameterForm.get('gh')?.value > 0" [ngClass]="'status-' + feedback.gh.status">
+        <div class="param-name">GH</div>
+        <div class="param-value">{{ feedback.gh.value }} dH</div>
+        <div class="param-status">{{ formatStatus(feedback.gh.status) }}</div>
+      </div>
+      
+      <div class="parameter-status" *ngIf="parameterForm.get('kh')?.value > 0" [ngClass]="'status-' + feedback.kh.status">
+        <div class="param-name">KH</div>
+        <div class="param-value">{{ feedback.kh.value }} dH</div>
+        <div class="param-status">{{ formatStatus(feedback.kh.status) }}</div>
+      </div>
+    </div>
+    
+    <div class="feedback-actions">
+      <button mat-raised-button color="primary" (click)="saveWithFeedback()">Save Parameters</button>
+      <button mat-button (click)="showFeedback = false">Edit Parameters</button>
+    </div>
+  </div>
 
-  <form [formGroup]="parameterForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="parameterForm" (ngSubmit)="checkParameters()" *ngIf="!showFeedback">
     <div class="form-row">
       <mat-form-field appearance="fill">
         <mat-label>Date</mat-label>
@@ -16,7 +68,6 @@
             Date is required
           </mat-error>
         }
-
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -36,7 +87,7 @@
       </mat-form-field>
     </div>
 
-    <div class="form-row" *ngIf="parameterForm.get('ph')?.value > 0">
+    <div class="form-row">
       <mat-form-field appearance="fill">
         <mat-label>Ammonia (ppm)</mat-label>
         <input matInput type="number" formControlName="ammonia" step="0.01">
@@ -53,19 +104,19 @@
       </mat-form-field>
     </div>
 
-    <div class="form-row" *ngIf="parameterForm.get('ammonia')?.value > 0">
+    <div class="form-row">
       <mat-form-field appearance="fill">
         <mat-label>Phosphate (ppm)</mat-label>
         <input matInput type="number" formControlName="phosphate" step="0.01">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>KH (Carbonate Hardness)</mat-label>
+        <mat-label>KH (Carbonate Hardness) dH</mat-label>
         <input matInput type="number" formControlName="kh" step="0.1">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>GH (General Hardness)</mat-label>
+        <mat-label>GH (General Hardness) dH</mat-label>
         <input matInput type="number" formControlName="gh" step="0.1">
       </mat-form-field>
     </div>
@@ -75,6 +126,6 @@
       <input matInput type="text" formControlName="notes" placeholder="Add any observations or changes made...">
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="parameterForm.invalid">Save Parameters</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="parameterForm.invalid">Check Compatibility</button>
   </form>
 </div>

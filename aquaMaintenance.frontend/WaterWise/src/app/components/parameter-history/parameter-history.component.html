@@ -10,8 +10,17 @@
     <div class="parameter-grid">
       @for (param of parameters.slice(0, 3); track param.id) {
         <div class="parameter-card">
-          <div class="parameter-label">Date</div>
-          <div>{{ param.date | date:'mediumDate' }}</div>
+          <div class="card-header">
+            <div>
+              <div class="parameter-label">Date</div>
+              <div>{{ param.date | date:'mediumDate' }}</div>
+            </div>
+            @if (param.healthScore !== undefined) {
+              <div class="health-score-badge" [ngClass]="getHealthScoreClass(param.healthScore)">
+                {{ param.healthScore }}
+              </div>
+            }
+          </div>
           
           <div class="parameter-label">pH</div>
           <div class="parameter-value">{{ param.ph }}</div>
@@ -31,6 +40,7 @@
       <thead>
         <tr>
           <th>Date</th>
+          <th>Health Score</th>
           <th>pH</th>
           <th>Temp (°C)</th>
           <th>Ammonia</th>
@@ -46,44 +56,58 @@
           <tr>
             <td>{{ param.date | date:'mediumDate' }}</td>
             <td>
-              {{ param.ph }}
-              @if (param.ph < 6.5 || param.ph > 8.5) {
-                <span class="badge badge-warning">Attention</span>
+              @if (param.healthScore !== undefined) {
+                <span class="health-score-inline" [ngClass]="getHealthScoreClass(param.healthScore)">
+                  {{ param.healthScore }}
+                </span>
               } @else {
-                <span class="badge badge-normal">Normal</span>
+                <span>N/A</span>
               }
+            </td>
+            <td>
+              {{ param.ph }}
+              <span class="badge" [ngClass]="getParameterStatusClass('ph', param.ph)">
+                {{ getParameterStatusLabel('ph', param.ph) }}
+              </span>
             </td>
             <td>{{ param.temperature }}</td>
             <td>
               {{ param.ammonia }}
-              @if (param.ammonia > 0.25) {
-                <span class="badge badge-danger">High</span>
-              } @else if (param.ammonia > 0) {
-                <span class="badge badge-warning">Present</span>
-              } @else {
-                <span class="badge badge-normal">Safe</span>
-              }
+              <span class="badge" [ngClass]="getParameterStatusClass('ammonia', param.ammonia)">
+                {{ getParameterStatusLabel('ammonia', param.ammonia) }}
+              </span>
             </td>
             <td>
               {{ param.nitrite }}
-              @if (param.nitrite > 0.25) {
-                <span class="badge badge-danger">High</span>
-              } @else if (param.nitrite > 0) {
-                <span class="badge badge-warning">Present</span>
-              } @else {
-                <span class="badge badge-normal">Safe</span>
-              }
+              <span class="badge" [ngClass]="getParameterStatusClass('nitrite', param.nitrite)">
+                {{ getParameterStatusLabel('nitrite', param.nitrite) }}
+              </span>
             </td>
-            <td>{{ param.nitrate }}</td>
-            <td>{{ param.kh }}</td>
-            <td>{{ param.gh }}</td>
+            <td>
+              {{ param.nitrate }}
+              <span class="badge" [ngClass]="getParameterStatusClass('nitrate', param.nitrate)">
+                {{ getParameterStatusLabel('nitrate', param.nitrate) }}
+              </span>
+            </td>
+            <td>
+              {{ param.kh }}
+              <span class="badge" [ngClass]="getParameterStatusClass('kh', param.kh)">
+                {{ getParameterStatusLabel('kh', param.kh) }}
+              </span>
+            </td>
+            <td>
+              {{ param.gh }}
+              <span class="badge" [ngClass]="getParameterStatusClass('gh', param.gh)">
+                {{ getParameterStatusLabel('gh', param.gh) }}
+              </span>
+            </td>
             <td>
               <button class="btn-danger" (click)="deleteParameter(param.id)">Delete</button>
             </td>
           </tr>
         } @empty {
           <tr>
-            <td colspan="9">No records found</td>
+            <td colspan="10">No records found</td>
           </tr>
         }
       </tbody>

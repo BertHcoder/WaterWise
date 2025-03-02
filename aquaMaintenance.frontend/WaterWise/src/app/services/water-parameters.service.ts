@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { WaterParameters } from '../models/water-parameters.model';
+import { WaterParameters, ParameterFeedback, ParameterStatus } from '../models/water-parameters.model';
+import { getParameterStatus, calculateHealthScore } from '../models/parameter-ranges.model';
 
 @Injectable({
   providedIn: 'root'
@@ -41,9 +42,20 @@ export class WaterParametersService {
       ? Math.max(...currentData.map(item => item.id)) + 1 
       : 1;
     
+    // Calculate health score
+    const healthScore = calculateHealthScore({
+      ph: parameters.ph,
+      ammonia: parameters.ammonia,
+      nitrite: parameters.nitrite,
+      nitrate: parameters.nitrate,
+      gh: parameters.gh,
+      kh: parameters.kh
+    });
+    
     const newParameters: WaterParameters = {
       ...parameters,
-      id: newId
+      id: newId,
+      healthScore
     };
 
     const updatedData = [...currentData, newParameters];
@@ -60,10 +72,71 @@ export class WaterParametersService {
 
   updateParameters(parameters: WaterParameters): void {
     const currentData = this.waterParametersSubject.value;
+    
+    // Recalculate health score
+    const healthScore = calculateHealthScore({
+      ph: parameters.ph,
+      ammonia: parameters.ammonia,
+      nitrite: parameters.nitrite,
+      nitrate: parameters.nitrate,
+      gh: parameters.gh,
+      kh: parameters.kh
+    });
+    
+    const updatedParameters = {
+      ...parameters,
+      healthScore
+    };
+    
     const updatedData = currentData.map(item => 
-      item.id === parameters.id ? parameters : item
+      item.id === parameters.id ? updatedParameters : item
     );
+    
     this.waterParametersSubject.next(updatedData);
     this.saveToLocalStorage(updatedData);
+  }
+
+  getParameterFeedback(parameters: {
+    ph?: number;
+    ammonia?: number;
+    nitrite?: number;
+    nitrate?: number;
+    gh?: number;
+    kh?: number;
+  }): ParameterFeedback {
+    const getStatus = (param: string, value: number): ParameterStatus => {
+      return {
+        value,
+        status: getParameterStatus(param, value) as any
+      };
+    };
+
+    const healthScore = calculateHealthScore(parameters);
+    
+    // Determine overall status based on health score
+    let overallStatus: 'excellent' | 'good' | 'caution' | 'poor' | 'critical';
+    
+    if (healthScore >= 90) {
+      overallStatus = 'excellent';
+    } else if (healthScore >= 75) {
+      overallStatus = 'good';
+    } else if (healthScore >= 50) {
+      overallStatus = 'caution';
+    } else if (healthScore >= 25) {
+      overallStatus = 'poor';
+    } else {
+      overallStatus = 'critical';
+    }
+
+    return {
+      ph: getStatus('ph', parameters.ph || 0),
+      ammonia: getStatus('ammonia', parameters.ammonia || 0),
+      nitrite: getStatus('nitrite', parameters.nitrite || 0),
+      nitrate: getStatus('nitrate', parameters.nitrate || 0),
+      gh: getStatus('gh', parameters.gh || 0),
+      kh: getStatus('kh', parameters.kh || 0),
+      healthScore,
+      overallStatus
+    };
   }
 }

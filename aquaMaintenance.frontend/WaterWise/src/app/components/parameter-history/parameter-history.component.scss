@@ -31,6 +31,55 @@ h2 {
   box-shadow: var(--card-shadow-hover);
 }
 
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.health-score-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.health-score-inline {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  min-width: 30px;
+  text-align: center;
+}
+
+.excellent {
+  background-color: #2ecc71;
+}
+
+.good {
+  background-color: #27ae60;
+}
+
+.caution {
+  background-color: #f39c12;
+}
+
+.poor {
+  background-color: #e67e22;
+}
+
+.critical {
+  background-color: #e74c3c;
+}
+
 .parameter-value {
   font-size: 1.8rem;
   font-weight: 700;
@@ -87,18 +136,23 @@ h2 {
   margin-left: 8px;
 }
 
-.badge-normal {
+.badge-good {
   background-color: #2ecc71;
   color: white;
 }
 
-.badge-warning {
+.badge-borderline {
   background-color: #f39c12;
   color: white;
 }
 
 .badge-danger {
   background-color: #e74c3c;
+  color: white;
+}
+
+.badge-unknown {
+  background-color: #95a5a6;
   color: white;
 }
 
