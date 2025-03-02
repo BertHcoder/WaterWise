@@ -1,0 +1,18 @@
+<button mat-icon-button [matMenuTriggerFor]="themeMenu" matTooltip="Change theme">
+  <mat-icon>{{ getThemeIcon() }}</mat-icon>
+</button>
+
+<mat-menu #themeMenu="matMenu">
+  <button mat-menu-item (click)="setTheme('light')" [class.active]="currentTheme === 'light'">
+    <mat-icon>light_mode</mat-icon>
+    <span>Light Theme</span>
+  </button>
+  <button mat-menu-item (click)="setTheme('dark')" [class.active]="currentTheme === 'dark'">
+    <mat-icon>dark_mode</mat-icon>
+    <span>Dark Theme</span>
+  </button>
+  <button mat-menu-item (click)="setTheme('aqua')" [class.active]="currentTheme === 'aqua'">
+    <mat-icon>water_drop</mat-icon>
+    <span>Aqua Theme</span>
+  </button>
+</mat-menu>

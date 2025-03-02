@@ -1,4 +1,16 @@
 /* Parameter history specific styles */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+}
+
+h2 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
 .parameter-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -7,26 +19,26 @@
 }
 
 .parameter-card {
-  background: white;
+  background: var(--card-bg-alt);
   border-radius: 8px;
   padding: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--card-shadow);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .parameter-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .parameter-value {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #2980b9;
+  color: var(--primary-color);
 }
 
 .parameter-label {
-  color: #7f8c8d;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -36,10 +48,34 @@
 .empty-state {
   text-align: center;
   padding: 40px 20px;
-  color: #7f8c8d;
-  background-color: #f8fafc;
+  color: var(--text-secondary);
+  background-color: var(--card-bg-alt);
   border-radius: 8px;
-  border: 2px dashed #e0e7ee;
+  border: 2px dashed var(--border-color);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  color: var(--text-primary);
+}
+
+.table th {
+  background-color: var(--table-header-bg);
+  color: var(--text-primary);
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table tr:hover {
+  background-color: var(--hover-bg);
 }
 
 .badge {
@@ -67,11 +103,15 @@
 }
 
 .btn-danger {
-  background-color: #e74c3c;
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
   padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
   font-size: 14px;
 }
 
 .btn-danger:hover {
-  background-color: #c0392b;
+  background-color: var(--danger-color-hover);
 }
