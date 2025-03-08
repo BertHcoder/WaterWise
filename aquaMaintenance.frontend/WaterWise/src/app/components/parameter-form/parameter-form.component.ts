@@ -65,18 +65,18 @@ export class ParameterFormComponent {
   }
 
   checkParameters(): void {
-    if (this.parameterForm.valid) {
-      const formValues = this.parameterForm.value;
-      this.feedback = this.waterParametersService.getParameterFeedback({
-        ph: formValues.ph,
-        ammonia: formValues.ammonia,
-        nitrite: formValues.nitrite,
-        nitrate: formValues.nitrate,
-        gh: formValues.gh,
-        kh: formValues.kh
-      });
-      this.showFeedback = true;
-    }
+    // if (this.parameterForm.valid) {
+    //   const formValues = this.parameterForm.value;
+    //   this.feedback = this.waterParametersService.getParameterFeedback({
+    //     ph: formValues.ph,
+    //     ammonia: formValues.ammonia,
+    //     nitrite: formValues.nitrite,
+    //     nitrate: formValues.nitrate,
+    //     gh: formValues.gh,
+    //     kh: formValues.kh
+    //   });
+    //   this.showFeedback = true;
+    // }
   }
 
   saveWithFeedback(): void {
@@ -86,8 +86,8 @@ export class ParameterFormComponent {
         ...this.parameterForm.value,
         healthScore: this.feedback.healthScore
       };
-      
-      this.waterParametersService.addParameters(formData);
+    
+     // this.waterParametersService.addParameters(formData);
       
       this.snackBar.open('Water parameters saved successfully!', 'Close', {
         duration: 3000,

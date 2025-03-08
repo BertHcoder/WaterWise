@@ -4,10 +4,10 @@ namespace aquaMaintenance.backEnd.services
 {
     public interface IWaterParametersDataService
     {
-        Task<IEnumerable<WaterParameter> GetAllParametersAsync();
-        Task<WaterParameter> GetParameterByIdAsync(int id);
-        Task AddParameterAsync(WaterParameter parameter);
-        Task UpdateParameterAsync(WaterParameter parameter);
-        Task DeleteParameterAsync(int id);
+        IEnumerable<WaterParameter> GetAll();
+        WaterParameter GetById(int id);
+        WaterParameter Create(WaterParameter parameters);
+        bool Update(WaterParameter parameters);
+        bool Delete(int id);
     }
 }

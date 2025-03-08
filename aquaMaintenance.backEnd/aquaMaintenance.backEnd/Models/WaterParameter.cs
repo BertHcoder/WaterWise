@@ -2,7 +2,8 @@ namespace aquaMaintenance.backEnd.Models
 {
     public class WaterParameter
     {
-        public int Id { get; set; }
+        public Guid UserId { get; set; }
+        public int MyProperty { get; set; }
         public DateTime MeasurementDate { get; set; }
         public double Temperature { get; set; }
         public double Ph { get; set; }

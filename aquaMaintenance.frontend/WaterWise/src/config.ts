@@ -1,5 +1,5 @@
 export const API_CONFIG = {
-    baseUrl: 'http://localhost:5000/api',
+    baseUrl: 'http://localhost:5225/api',
     endpoints: {
       waterParameters: '/waterparameters',
       tanks: '/tanks',

@@ -44,30 +44,5 @@ namespace aquaMaintenance.backEnd.Services
             var collection = db.GetCollection<WaterParameter>(CollectionName);
             return collection.Delete(id);
         }
-
-        public Task<IEnumerable<WaterParameter>> GetAllParametersAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<WaterParameter> GetParameterByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AddParameterAsync(WaterParameter parameter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateParameterAsync(WaterParameter parameter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteParameterAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

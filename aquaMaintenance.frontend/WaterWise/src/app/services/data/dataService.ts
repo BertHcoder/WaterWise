@@ -10,8 +10,8 @@ export class BaseDataService<T> {
   protected http = inject(HttpClient);
   protected apiUrl: string;
 
-  constructor(protected endpoint: string) {
-    this.apiUrl = `${environment.apiUrl}${endpoint}`;
+  constructor() {
+    this.apiUrl = `${environment.apiUrl}/waterParameters}`;
   }
 
   getAll(): Observable<T[]> {
