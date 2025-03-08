@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { WaterParametersService } from '../../services/water-parameters.service';
@@ -37,7 +37,8 @@ import { ParameterFeedback } from '../../models/water-parameters.model';
     MatToolbarModule,
   MatSnackBarModule],
   templateUrl: './parameter-form.component.html',
-  styleUrls: ['./parameter-form.component.scss']
+  styleUrls: ['./parameter-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ParameterFormComponent {
   parameterForm: FormGroup;

@@ -15,37 +15,37 @@
     </div>
     
     <div class="parameter-status-grid">
-      <div class="parameter-status" *ngIf="parameterForm.get('ph')?.value > 0" [ngClass]="'status-' + feedback.ph.status">
+      <div class="parameter-status" [ngClass]="'status-' + feedback.ph.status">
         <div class="param-name">pH</div>
         <div class="param-value">{{ feedback.ph.value }}</div>
         <div class="param-status">{{ formatStatus(feedback.ph.status) }}</div>
       </div>
       
-      <div class="parameter-status" *ngIf="parameterForm.get('ammonia')?.value > 0" [ngClass]="'status-' + feedback.ammonia.status">
+      <div class="parameter-status" [ngClass]="'status-' + feedback.ammonia.status">
         <div class="param-name">Ammonia</div>
         <div class="param-value">{{ feedback.ammonia.value }} ppm</div>
         <div class="param-status">{{ formatStatus(feedback.ammonia.status) }}</div>
       </div>
       
-      <div class="parameter-status" *ngIf="parameterForm.get('nitrite')?.value > 0" [ngClass]="'status-' + feedback.nitrite.status">
+      <div class="parameter-status" [ngClass]="'status-' + feedback.nitrite.status">
         <div class="param-name">Nitrite</div>
         <div class="param-value">{{ feedback.nitrite.value }} ppm</div>
         <div class="param-status">{{ formatStatus(feedback.nitrite.status) }}</div>
       </div>
       
-      <div class="parameter-status" *ngIf="parameterForm.get('nitrate')?.value > 0" [ngClass]="'status-' + feedback.nitrate.status">
+      <div class="parameter-status" [ngClass]="'status-' + feedback.nitrate.status">
         <div class="param-name">Nitrate</div>
         <div class="param-value">{{ feedback.nitrate.value }} ppm</div>
         <div class="param-status">{{ formatStatus(feedback.nitrate.status) }}</div>
       </div>
       
-      <div class="parameter-status" *ngIf="parameterForm.get('gh')?.value > 0" [ngClass]="'status-' + feedback.gh.status">
+      <div class="parameter-status" [ngClass]="'status-' + feedback.gh.status">
         <div class="param-name">GH</div>
         <div class="param-value">{{ feedback.gh.value }} dH</div>
         <div class="param-status">{{ formatStatus(feedback.gh.status) }}</div>
       </div>
       
-      <div class="parameter-status" *ngIf="parameterForm.get('kh')?.value > 0" [ngClass]="'status-' + feedback.kh.status">
+      <div class="parameter-status" [ngClass]="'status-' + feedback.kh.status">
         <div class="param-name">KH</div>
         <div class="param-value">{{ feedback.kh.value }} dH</div>
         <div class="param-status">{{ formatStatus(feedback.kh.status) }}</div>
