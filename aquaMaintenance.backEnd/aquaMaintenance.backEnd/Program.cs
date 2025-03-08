@@ -1,6 +1,11 @@
+using aquaMaintenance.backEnd.services;
+using aquaMaintenance.backEnd.Services;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IWaterParametersDataService, WaterParametersDataService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

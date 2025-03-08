@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { WaterParameters, ParameterFeedback, ParameterStatus } from '../models/water-parameters.model';
 import { getParameterStatus, calculateHealthScore } from '../models/parameter-ranges.model';
+import { BaseDataService } from './data/dataService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WaterParametersService {
+export class WaterParametersService extends BaseDataService<WaterParameters> {
   private storageKey = 'waterParameters';
   private waterParametersSubject = new BehaviorSubject<WaterParameters[]>([]);
   public waterParameters$: Observable<WaterParameters[]> = this.waterParametersSubject.asObservable();
 
-  constructor() {
+  super() {
     this.loadFromLocalStorage();
   }
 

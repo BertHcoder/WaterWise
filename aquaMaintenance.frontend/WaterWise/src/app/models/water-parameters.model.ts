@@ -1,4 +1,4 @@
-export interface WaterParameters {
+export interface WaterParameter {
   id: number;
   date: string;
   ph: number;
