@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WaterParametersService } from '../../services/water-parameters.service';
 import { WaterParameters } from '../../models/water-parameters.model';
@@ -12,9 +12,9 @@ import { getParameterStatus } from '../../models/parameter-ranges.model';
   styleUrls: ['./parameter-history.component.scss']
 })
 export class ParameterHistoryComponent implements OnInit {
-  parameters: WaterParameters[] = [];
+  private waterParametersService = inject(WaterParametersService);
 
-  constructor(private waterParametersService: WaterParametersService) {}
+  parameters: WaterParameters[] = [];
 
   ngOnInit(): void {
     this.waterParametersService.getAllParameters().subscribe(data => {

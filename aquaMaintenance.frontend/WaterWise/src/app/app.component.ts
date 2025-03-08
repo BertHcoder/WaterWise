@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ThemeService } from './services/theme.service';
@@ -10,9 +10,9 @@ import { ThemeService } from './services/theme.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  title = 'Water Parameters Tracker';
+  private themeService = inject(ThemeService);
 
-  constructor(private themeService: ThemeService) {}
+  title = 'Water Parameters Tracker';
 
   ngOnInit(): void {
     // Initialize theme on app start

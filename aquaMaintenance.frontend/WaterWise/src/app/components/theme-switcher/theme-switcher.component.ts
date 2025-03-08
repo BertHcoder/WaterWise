@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService, ThemeOption } from '../../services/theme.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,8 +14,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrls: ['./theme-switcher.component.scss']
 })
 export class ThemeSwitcherComponent {
-  constructor(public themeService: ThemeService) {}
-
+  themeService = inject(ThemeService);
+  
   setTheme(theme: ThemeOption): void {
     this.themeService.setTheme(theme);
   }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { WaterParametersService } from '../../services/water-parameters.service';
@@ -41,15 +41,15 @@ import { ParameterFeedback } from '../../models/water-parameters.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ParameterFormComponent {
+  private fb = inject(FormBuilder);
+  private waterParametersService = inject(WaterParametersService);
+  private snackBar = inject(MatSnackBar);
+
   parameterForm: FormGroup;
   showFeedback = false;
   feedback!: ParameterFeedback;
 
-  constructor(
-    private fb: FormBuilder,
-    private waterParametersService: WaterParametersService,
-    private snackBar: MatSnackBar
-  ) {
+  constructor() {
     this.parameterForm = this.fb.group({
       date: [new Date().toISOString().split('T')[0], Validators.required],
       ph: [7.0, [Validators.required, Validators.min(0), Validators.max(14)]],
